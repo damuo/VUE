@@ -1,0 +1,21 @@
+{
+  "name": "webpackconfig",
+  "version": "1.0.0",
+  "description": "webpack配置方式",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack",
+    "build": "webpack",
+    "local": "./node_modules/.bin/webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "webpack配置方式"
+  },
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    =========================遍历数组====================
+    <!--遍历数组-->
+    <ul>
+        <li v-for="(item,index) in address">
+            地址:{{item}}
+        </li>
+   </ul>
+    <ul>
+        <li v-for="(item,index) in address">
+            地址{{index+1}}:{{item}}
+        </li>
+    </ul>
+    =========================遍历对象====================
+    <!--遍历对象-->
+    <ul>
+        <li v-for="val in user">
+            {{val}}
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            姓名:{{user.name}}  年龄:{{user.age}}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="(val,key,index) in user">
+            值：{{val}}-----键：{{key}}-----索引：{{index}}
+        </li>
+    </ul>
+    =========================遍历数组对象====================
+    <!--遍历数组对象-->
+    <ul>
+        <li v-for="item in users">
+            姓名:{{item.name}}
+            年龄:{{item.age}}
+        </li>
+    </ul>
+
+    =========================遍历对象数组====================
+    <!--遍历对象数组-->
+    <ul>
+        <li v-for="item in info">
+            姓名:{{info.name}}
+            年龄:{{info.age}}
+            身高:{{info.height}}
+            地址:{{info.address[1]}}
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el: '#app',
+        data:{
+            //数组
+            address:['北京','上海','深圳','香港'],
+            //对象
+            user:{
+                name:"Tom",
+                age:18,
+                height:175
+            },
+            //数组对象
+            users:[
+                {"name":"Tom","age":18},
+                {"name":"Tony","age":28}
+                ],
+            //对象数组
+            info:{
+                name:"Tom",
+                age:18,
+                height:175,
+                address:['北京','上海','深圳','香港']
+            }
+        }
+    })
+</script>
+</body>
+</html>

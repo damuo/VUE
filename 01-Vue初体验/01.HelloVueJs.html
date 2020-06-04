@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--vue只对被挂载的元素生效-->
+<div id="app">
+    <h1>消息：{{message}}</h1>
+    <h2>名字：{{name}}</h2>
+</div>
+<div>未挂载：{{message}}</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+   //let(变量)|const(常量)
+   const apps=new Vue({
+       el: '#app', //挂载要管理的元素
+       data:{ //定义数据
+            message: "hello Vue",
+            name: "vue"
+       }
+   });
+</script>
+</body>
+</html>
+

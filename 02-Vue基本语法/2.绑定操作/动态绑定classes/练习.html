@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    消息:{{message}}</br>
+    <ul>
+        <!--vue响应式-->
+        <li v-for="movie in movies">{{movie}}</li>
+    </ul>
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el: '#app',
+        data: {
+            message : "hello",
+            movies:['教父','星际穿越','大话西游','海王'] //数组
+        }
+    });
+</script>
+</body>
+</html>

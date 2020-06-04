@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--全局组件-->
+    <cpn></cpn>
+    <!--局部组件-->
+    <cpn2></cpn2>
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <h3>{{title}}</h3>
+        <h2>当前计数：{{counter}}</h2>
+        <button @click="add">+</button>
+        <button @click="less">-</button>
+    </div>
+</template>
+<script type="text/javascript">
+    //1.语法糖注册全局组件
+    Vue.component('cpn',{
+        //使用抽离模板
+        template:'#cpn',
+        //全局组件数据
+        data(){
+            return {
+                title:'我是全局组件',
+                counter:0
+            };
+        },
+        methods:{
+            add(){
+                this.counter++;
+            },
+            less(){
+                this.counter--;
+            }
+        }
+    });
+
+    //顶层组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+        },
+        //2.语法糖注册局部组件
+        components:{
+            'cpn2': {
+                //使用抽离模板
+                template:'#cpn',
+                //局部组件数据
+                data(){
+                    return {
+                        title:'我是局部组件',
+                        text:'这是内容',
+                        counter:0
+                    };
+                },
+                methods:{
+                    add(){
+                        this.counter++;
+                    },
+                    less(){
+                        this.counter--;
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

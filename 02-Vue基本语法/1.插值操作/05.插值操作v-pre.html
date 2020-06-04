@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--v-pre：显示{{}}等}-->
+    <h2 v-pre>{{这是特殊符号}}</h2>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    //let(变量)|const(常量)
+    const apps=new Vue({
+        el: '#app',
+        data:{
+            message:'hello world!'
+        }
+    })
+</script>
+</body>
+</html>

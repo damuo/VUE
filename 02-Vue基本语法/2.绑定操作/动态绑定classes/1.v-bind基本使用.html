@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<body>
+<div id="app">
+    <!--动态绑定url-->
+    <a v-bind:href="baidu">百度一下</a><br>
+    <img v-bind:src="imgURL" alt=""><br>
+    <!--语法糖写法-->
+    <a :href="baidu">百度一下</a><br>
+    <img :src="imgURL" alt="">
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<script type="text/javascript">
+    //let(变量)|const(常量)
+    const apps=new Vue({
+        el: '#app',
+        data:{
+            message:'hello world!',
+            imgURL:"https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024",
+            baidu:"https://www.baidu.com"
+        }
+    })
+</script>
+</body>
+</html>

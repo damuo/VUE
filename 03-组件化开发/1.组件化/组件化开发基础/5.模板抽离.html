@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--全局组件-->
+    <cpn></cpn>
+    <!--局部组件-->
+    <cpn2></cpn2>
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<!--模板抽离：方法一-->
+<!--<script type="text/x-template" id="cpn">
+    <div>
+        <h3>我是标题</h3>
+        <p>我是内容</p>
+    </div>
+</script>-->
+<!--模板抽离：方法二-->
+<template id="cpn">
+    <div>
+        <h3>我是标题</h3>
+        <p>我是内容</p>
+    </div>
+</template>
+<script type="text/javascript">
+    //1.语法糖注册全局组件
+    Vue.component('cpn',{
+        //使用抽离模板
+        template:'#cpn'
+    });
+
+    //顶层组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+        },
+        //2.语法糖注册局部组件
+        components:{
+            'cpn2': {
+                //使用抽离模板
+                template:'#cpn'
+            }
+        }
+    });
+</script>
+</body>
+</html>

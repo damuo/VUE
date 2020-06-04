@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>当前计数:{{counter}}</h1>
+    <!--一般方式-->
+<!--    <button v-on:click="counter++">+</button>-->
+<!--    <button  v-on:click="counter--">-</button>-->
+    <!--Vue方式-->
+<!--    <button v-on:click="add">+</button>-->
+<!--    <button  v-on:click="less">-</button>-->
+    <!--Vue语法糖方式 view-->
+    <button @click="add">+</button>
+    <button @click="less">+</button>
+
+</div>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script>
+    /*model*/
+    const obj={
+        counter:0,
+        message: "hello"
+    }
+    /*view Model*/
+    const app=new Vue({
+        el: '#app',
+        data: obj,
+        methods:{
+            //自定义函数
+            add: function () {
+                console.log("加执行");
+                this.counter++;
+            },
+            less: function () {
+                console.log("减执行");
+                this.counter--;
+            },
+            //钩子函数
+            before:function () {
+
+            },
+            create:function () {
+
+            },
+            mounted:function () {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

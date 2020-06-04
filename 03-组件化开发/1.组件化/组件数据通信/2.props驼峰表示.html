@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--局部组件
+        数据：父传子-->
+    <cpn2 :cmovies="movies" :cmessage="message" :cinfo="info" :cusers="users"></cpn2>
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <p> {{cmessage}}</p>
+        <p v-for="(item,index) in cmovies">{{index+1}}-{{item}}</p>
+        <p>姓名:{{cinfo.name}}-年龄：{{cinfo.age}}</p>
+        <p v-for="(item,index) in cusers">
+            姓名:{{item.name}} <br>
+            年龄:{{item.age}}
+        </p>
+    </div>
+</template>
+<script type="text/javascript">
+    const cpn={
+        //使用抽离模板
+        template:'#cpn',
+        props:{
+            cmessage:{
+                type:String, //类型限制
+                default:'hello World!', //默认值
+                required: true //必填
+            },
+            cmovies:{
+                type: Array,
+                default(){ //类型是对象|数组,默认值必须是一个函数并返回值
+                    return []
+                },
+                required: true
+            },
+            cinfo:{
+                type:Object,
+                default() {
+                    return {};
+                }
+            },
+            cusers:{
+                type:Array,
+                default(){
+                    return [];
+                }
+            }
+        },
+        data(){
+            return{}
+        },
+        methods:{
+
+        }
+    };
+
+    //顶层组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'hello World！',
+            movies:["星际穿越",'异星觉醒','三体'],
+            info:{
+                name:'Tom',
+                age:16
+            },
+            users:[
+                {name:'tom1',age:18},
+                {name:'tom2',age:19},
+                {name:'tom3',age:20},
+            ]
+        },
+        //2.语法糖注册局部组件
+        components:{
+            'cpn2': cpn
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--局部组件|数据：父传子-->
+    <cpn2 :cmovies="movies" :cmessage="message"></cpn2>
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <p> {{cmessage}}</p>
+        <p v-for="(item,index) in cmovies">{{index+1}}-{{item}}</p>
+    </div>
+</template>
+<script type="text/javascript">
+    const cpn={
+        //使用抽离模板
+        template:'#cpn',
+        //方式一:数组
+        /*props:['cmovies','cmessage'],*/
+        //方式二：对象
+        props:{
+            //1.类型限制
+            /*cmovies:Array,
+            cmessage: String,*/
+            //2.类型限制并提供默认值
+            cmessage:{
+                type:String, //类型限制
+                default:'hello World!', //默认值
+                required: true //必填
+            },
+            cmovies:{
+                type: Array,
+                default(){ //类型是对象|数组,默认值必须是一个函数并返回值
+                    return []
+                },
+                required: true
+            }
+        }
+    };
+
+    //顶层组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'hello World！',
+            movies:["星际穿越",'异星觉醒','三体']
+        },
+        //2.语法糖注册局部组件
+        components:{
+            'cpn2': cpn
+        }
+    });
+</script>
+</body>
+</html>

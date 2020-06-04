@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.异步方法TimeOut
+    /*setTimeout(()=>{
+        console.log('Hello WOrld!');
+    },1000)*/
+    //2.Promise方法
+    new Promise((resolve,reject)=>{
+        //第一次请求发起
+        setTimeout(()=>{
+            let random = Math.random()
+            const succes="第一次请求成功"
+            const faild="第一次请求失败"
+            if(random>0.5){
+                resolve(succes)
+            }else {
+                reject(faild)
+            }
+        },1000)
+    }).then((data)=>{//第一次请求结果成功
+        console.log(data);
+        return new Promise((resolve,reject)=>{
+            //第二次请求发起
+            let random = Math.random()
+            const succes="第二次请求成功"
+            const faild="第二次请求失败"
+            if(random>0.5){
+                resolve(data+succes)
+            }else {
+                reject(data+faild)
+            }
+        }).then((data)=>{//第二次请求结果成功
+            console.log(data);
+            return new Promise((resolve,reject)=>{
+                //第三次请求发起
+                //第二次请求发起
+                let random = Math.random()
+                const succes="第三次请求成功"
+                const faild="第三次请求失败"
+                if(random>0.5){
+                    resolve(data+succes)
+                }else {
+                    reject(data+faild)
+                }
+            }).then((data)=>{//第三次请求结果成功
+                console.log(data);
+            }).catch((data)=>{//第三次请求结果失败
+                console.log(data);
+            })
+        }).catch((data)=>{//第二次请求结果失败
+            console.log(data);
+        })
+    }).catch((data)=>{//第一次请求结果失败
+        console.log(data);
+    })
+    //3.数据传递
+   /* let random = Math.random()
+    new Promise((resolve,reject)=>{
+        //第一次请求
+        setTimeout(()=>{
+            //请求成功
+            if(random>0.5){
+                const success='请求数据成功!'
+                resolve(success)
+            }
+            //请求失败
+            else{
+                const failure='请求数据失败!'
+                reject(failure)
+            }
+        },1000)
+    }).then((data)=>{//请求成功
+        //第一次请求结果
+        console.log(data);
+    }).catch((err)=>{//请求失败
+        console.log(err)
+    })*/
+
+</script>
+</body>
+</html>

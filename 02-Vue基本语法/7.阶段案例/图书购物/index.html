@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <table>
+        <thead>
+            <tr>
+                <th>书籍名称</th>
+                <th>出版日期</th>
+                <th>价格</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in list">
+                <td> {{item.name}}</td>
+                <td>{{item.date}}</td>
+                <!--1.方法方式处理价格细节-->
+                <!--<td>{{getFinaPrice(item.price)}}</td>-->
+                <!--2.过滤器方式处理价格细节-->
+                <td>{{item.price | showPrices}}</td>
+                <td>
+                    <!--1.方法控制减的范围-->
+                    <!--<button @click="less(index)">-</button>-->
+                    <!--2.动态绑定控制减的范围-->
+                    <button @click="less(index)" :disabled="item.count<=1">-</button>
+                    {{item.count}}
+                    <button @click="add(index)">+</button>
+                </td>
+                <td><button @click="remove(index)">移除</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>总价:{{totalPrice | showPrices}}</h2>
+
+</div>
+<script src="../../../js/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

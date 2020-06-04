@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--遍历数组-->
+    <ul>
+        <li v-for="item in letters" :key="item">
+            {{item}}
+        </li>
+    </ul>
+    <button @click="splice">删除|插入|替换</button><br>
+    <button @click="unshift">最前面添加</button><br>
+    <button @click="push">最后面添加</button><br>
+    <button @click="pop">删除最后一个</button><br>
+    <button @click="shift">删除第一个</button><br>
+    <button @click="sort">顺序排列</button><br>
+    <button @click="reverse">倒序排列</button>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el: '#app',
+        data:{
+            letters:['A','B','C','D','E']
+        },
+        methods:{
+            splice(){
+                //第一个参数表示开始位置，第二个参数表示删除的数量无则删除后面所有元素，第三个参数表示替换
+                app.letters.splice(2,0,'F')
+            },
+            push(){
+                app.letters.push('F','G','H')
+            },
+            pop(){
+                app.letters.pop()
+            },
+            shift(){
+                app.letters.shift()
+            },
+            unshift(){
+                app.letters.unshift("F","G","H")
+            },
+            sort(){
+                app.letters.sort()
+            },
+            reverse(){
+                app.letters.reverse()
+            }
+        }
+    })
+</script>
+</body>
+</html>

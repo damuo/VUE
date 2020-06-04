@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--v-html：解析html-->
+    <h2 v-html="url"></h2>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    //let(变量)|const(常量)
+    const apps=new Vue({
+        el: '#app',
+        data:{
+            url:'<a href="http://www.baidu.com">百度一下</a>'
+        }
+    });
+</script>
+</body>
+</html>

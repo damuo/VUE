@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul v-for="item in books">
+        <li>名称:{{item.name}}价格:{{item.price}}</li>
+    </ul>
+    <h2>总价格：{{totalPrice }}</h2>
+    <h2>总价格：{{totalPrice1}}</h2>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            books:[
+                {id:1,name:"unix编程艺术",price:119},
+                {id:2,name:"代码大全",price:120},
+                {id:3,name:"深入计算机原理",price:113},
+                {id:4,name:"现代操作系统",price:160}
+            ]
+        },
+        computed:{
+            //计算属性包含get|set方法，由于set方法是只读，故省略
+            totalPrice1:{
+                set:function () {//该方法是只读，可省略
+                },
+                get:function () {
+                    let result=0;
+                    for(let i=0;i<this.books.length;i++){
+                        result  +=this.books[i].price
+                    }
+                    return result;
+                }
+            },
+            //省略set后的写法
+            totalPrice:function () {
+                let result=0;
+                for(let i=0;i<this.books.length;i++){
+                    result  +=this.books[i].price
+                }
+                return result;
+            }
+        }
+    });
+</script>
+</body>
+</html>

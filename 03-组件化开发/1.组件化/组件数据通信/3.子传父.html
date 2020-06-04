@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--局部组件-->
+    <cpn2 @itemclick="cpnclick"></cpn2>
+</div>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+       <button v-for="(item,index) in categories" @click="btnclick(item)">
+           {{item.name}}
+       </button>
+    </div>
+</template>
+<script type="text/javascript">
+    /*子组件*/
+    const cpn={
+        //使用抽离模板
+        template:'#cpn',
+        data(){
+            return {
+                categories:[
+                    {id:'a',name:'热门推荐'},
+                    {id:'b',name:'手机数码'},
+                    {id:'c',name:'家用家电'},
+                    {id:'d',name:'电脑办公'},
+                ]
+            }
+        },
+        methods:{
+            btnclick(item){
+                //发送事件:自定义事件
+                this.$emit('itemclick',item)
+            }
+        }
+    };
+
+    //顶层组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+
+        },
+        //2.语法糖注册局部组件
+        components:{
+            'cpn2': cpn
+        },
+        methods: {
+            cpnclick(item){
+                console.log(item)
+            }
+        }
+    });
+</script>
+</body>
+</html>

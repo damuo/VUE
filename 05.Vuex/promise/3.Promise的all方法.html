@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Promise.all([
+        //真实开发
+        /*new Promise((resolve,reject)=>{
+            $ajax({
+                url:"url1",
+                success: function (data) {
+                    resolve(data)
+                }
+            })
+        }),
+        new Promise((resolve,reject)=>{
+            $ajax({
+                url:"url2",
+                success: function (data) {
+                    resolve(data)
+                }
+            })
+        })*/
+
+        //使用setTimout代替Ajax进行模拟演示
+        new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                if(true){
+                    resolve({name:'Tom',age:21})
+                }else {
+                    reject("未知错误1!")
+                }
+            },1000)
+       }),
+       new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+               if(true){
+                   resolve({name:'Tony',age:23})
+               }else {
+                   reject("未知错误2!")
+               }
+           },1000)
+       })
+    ]).then(result=>{
+        //全部获取
+        console.log(result)
+        //单个获取
+        console.log(result[0]);
+        console.log(result[1]);
+    }).catch(data=>{
+        console.log(data);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--父组件-->
+<div id="app">
+    <cpn1 :number1="num1" :number2="num2"
+          @num1change="num1change"
+          @num2change="num2change"/>
+</div>
+<!--子类模板-->
+<template id="cpn">
+    <div>
+        <p>props继承父组件的数据:{{number1}}</p>
+        <p>data赋值到子组件的数据:{{dnumber1}}</p>
+        <!--只改变子组件的值-->
+        <input type="text" v-model="dnumber1">
+        <!---改变子组件值(:value="dnumber2"绑定)同时反向改变父组件的值（@input="num2input"）-->
+        <input type="text" :value="dnumber1" @input="num1input">
+        <p>------------------------------------------------------</p>
+        <p>props继承父组件的数据:{{number2}}</p>
+        <p>data赋值到子组件的数据:{{dnumber2}}</p>
+        <!--只改变子组件的值-->
+        <input type="text" v-model="dnumber2">
+        <!--改变子组件值(:value="dnumber2"绑定)同时反向改变父组件的值（@input="num2input"）-->
+        <input type="text" :value="dnumber2" @input="num2input">
+    </div>
+</template>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el: '#app',
+        data:{
+            num1:1,
+            num2:0
+        },
+        //语法糖注册子组件(局部注册)
+        components:{
+            'cpn1': {
+                template: '#cpn',
+                //1.获取父组件数据，并按数据类型验证
+                props:{
+                    number1:Number,
+                    number2:Number
+                },
+                //2.按需赋值通过验证的数据到子组件
+                data(){
+                    return{
+                        dnumber1: this.number1,
+                        dnumber2: this.number2
+                    }
+                },
+                methods:{
+                    num1input(event){
+                        //改变当前组件(子组件)的值
+                        this.dnumber1=event.target.value;
+                        //触发父类事件，改变父组件的值
+                        this.$emit("num1change",this.dnumber1);
+                    },
+                    num2input(event){
+                        //改变当前组件(子组件的值)
+                        this.dnumber2=event.target.value;
+                        //触发父类事件，改变父组件的值
+                        this.$emit("num2change",this.dnumber2);
+                    }
+                }
+            }
+        },
+        methods: {
+            num1change(value){
+                console.log(typeof value);
+                this.num1=parseInt(value);
+            },
+            num2change(value){
+                console.log(typeof value);
+                this.num2=parseInt(value);
+            }
+        }
+    })
+</script>
+</body>
+</html>

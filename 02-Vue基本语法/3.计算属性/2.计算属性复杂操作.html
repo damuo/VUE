@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul v-for="item in books">
+        <li>名称:{{item.name}}价格:{{item.price}}</li>
+    </ul>
+    <h2>总价格：{{totalPrice}}</h2>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            books:[
+                {id:1,name:"unix编程艺术",price:119},
+                {id:2,name:"代码大全",price:120},
+                {id:3,name:"深入计算机原理",price:113},
+                {id:4,name:"现代操作系统",price:160}
+            ]
+        },
+        computed:{
+            totalPrice:function () {
+                let result=0;
+                for(let i=0;i<this.books.length;i++){
+                    result  +=this.books[i].price
+                }
+                /*for(let i in this.books){
+                    this.books[i];
+                }
+                for(let book of this.books){
+                }*/
+                return result;
+            }
+        }
+    });
+</script>
+</body>
+</html>

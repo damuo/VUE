@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn1 :cmessage="message"></cpn1>
+    <cpn1 :cmessage="message"></cpn1>
+    <cpn1 :cmessage="message"></cpn1>
+    <cpn1 :cmessage="message"></cpn1>
+    <button @click="btnclick">获取子组件</button>
+</div>
+<!--子组件模板-->
+<template id="cpn">
+    <div>
+        <p>我是子组件</p>
+    </div>
+</template>
+<script type="text/javascript" src="../../../js/vue.js"></script>
+<script type="text/javascript">
+    //子组件
+    const cpnL= {
+        template: '#cpn',
+        props: {
+            cmessage: String
+        },
+        data() {
+            return {
+                name:'我是子组件属性'
+            };
+        },
+        methods: {
+            showMessage() {
+                return '我是子组件方法';
+            }
+        }
+    };
+    //父组件
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'我是父组件属性',
+        },
+        methods:{
+            btnclick(){
+                //获取第一个字组件父方法
+                alert(this.$children[0].showMessage());
+                //获取第一个子组件父属性
+                alert(this.$children[0].name);
+                //获取所有子组件对象【数组】
+                console.log(this.$children);
+            }
+        },
+        //语法糖注册子组件
+        components:{
+            cpn1:cpnL
+        }
+    })
+</script>
+</body>
+</html>

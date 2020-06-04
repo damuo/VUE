@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2 v-show="isUser">显示的值</h2>
+    <button @click="isTrue()">{{message}}</button>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el: '#app',
+        data:{
+            isUser:true,
+            message:"显示"
+        },
+        methods:{
+            isTrue(){
+                if(this.isUser){
+                    this.message="隐形";
+                    return this.isUser=!this.isUser;
+                }else{
+                    this.message="显示";
+                    return this.isUser=!this.isUser;
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--1.lazy:让双向绑定数据更新延迟,回车和失焦时更新-->
+    <input type="text" v-model.lazy="message">
+    <h3> {{message}}</h3>
+    <!--2.number：直接转化为number类型-->
+    <input type="number" v-model.number="age">
+    <h3>类型：{{typeof age}}-值：{{age}}</h3>
+    <!--3.trim：取消空格-->
+    <input type="text" v-model.trim="name">
+    <h3>输入姓名:{{name}}</h3>
+
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'hello World!',
+            age:'',
+            name:''
+        }
+    })
+</script>
+</body>
+</html>

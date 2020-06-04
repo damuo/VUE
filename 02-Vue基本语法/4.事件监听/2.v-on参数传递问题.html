@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--无参方法，可省略小括号-->
+    <button @click="btnClick()">按钮1</button>
+    <button @click="btnClick">按钮1</button>
+
+    <!--有参方法,有小括号不传参数时值为underfind，无小括号时会自动创建一个event对象-->
+    <button @click="btn2Click()">按钮2</button>
+    <button @click="btn2Click">按钮2</button>
+    <!--传参同时传event对象-->
+    <button @click="btn3Click(123,$event)">按钮3</button>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            counter:0
+        },
+        methods:{
+            btnClick(){
+                console.log("无参")
+            },
+            btn2Click(event){
+                console.log(event,'----------')
+            },
+            btn3Click(obj,event){
+                console.log(event,obj,'----------')
+            }
+        }
+    });
+</script>
+</body>
+</html>

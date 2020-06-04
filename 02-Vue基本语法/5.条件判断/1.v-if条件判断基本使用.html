@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2 v-if="true">{{message}}</h2>
+    <h2 v-if="isShow">{{message}}</h2>
+    <h2 v-if="isTrue">{{message}}</h2>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script type="text/javascript">
+    const app=new Vue({
+        el: '#app',
+        data:{
+            isShow:true,
+            message:'hello Vue!'
+        },
+        computed:{
+
+        },
+        methods:{
+            isTrue(){
+                return this.isShow;
+            }
+        }
+    })
+</script>
+</body>
+</html>

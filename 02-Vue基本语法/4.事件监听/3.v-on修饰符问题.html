@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div @click="divClick">
+        <!--1. @click.stop阻止外层事件被触发-->
+        <button @click.stop="btnClick(123)">按钮1</button>
+    </div>
+    <br>
+    <!--2. @click.prevent阻止默认事件-->
+    <form action="#" method="get">
+        <!--阻止点击提交后立即提交,使用自定义提交-->
+        <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+    <br>
+    <!--3. @keyup监听键盘键帽,按键释放触发-->
+    <input type="text" @keyup="keyUp">
+    <br>
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            counter:0
+        },
+        methods:{
+            divClick(){
+                console.log("div",'---------')
+            },
+            btnClick(event){
+                console.log(event,'----------')
+            },
+            submitClick(){
+                console.log("提交",'------------')
+            },
+            keyUp(){
+                console.log("键帽",'-------------')
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{counter}}</h2>
+    <!--原始写法-->
+    <button v-on:click="add()">+</button>
+    <button v-on:click="less">-</button>
+    <!--语法糖写法-->
+<!--    <button @click="add">+</button>-->
+<!--    <button @click="less">-</button>-->
+</div>
+<script type="text/javascript" src="../../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            counter:0
+        },
+        methods:{
+            add () {
+                this.counter++;
+            },
+            less () {
+                this.counter--;
+            }
+        }
+    });
+</script>
+</body>
+</html>
